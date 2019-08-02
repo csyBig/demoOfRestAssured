@@ -1,0 +1,15 @@
+
+---
+active: st
+app:
+  auth:
+    user: sang
+    password: 123
+  db:
+    dbUrl: jdbc:mysql://localhost:3306/vueblog2?useUnicode=true&characterEncoding=UTF-8
+    user: root
+    password: whq12345
+st:
+  url: http://localhost:8082/
+dev:
+  url: http://localhost:8082/
