@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+
+        stage('init'){
+            steps {
+                sh 'echo init stage ...'
+            }
+        }
         stage('Build') {
             parallel{
                 stage('Build:Module1') {
@@ -12,6 +18,7 @@ pipeline {
                 stage('Build:Module2') {
                     steps {
                         sh 'echo Build Module2 stage ...'
+                        sh 'mvn clean test'
                     }
                 }
                 stage('Build:Module3') {
@@ -26,10 +33,6 @@ pipeline {
                 sh 'echo Test stage ...'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploy stage ...'
-            }
-        }
+
     }
   }
