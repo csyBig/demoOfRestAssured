@@ -3,6 +3,7 @@ pipeline {
 
     stages {
 
+     def mvnHome = tool 'M3'
         stage('init'){
             steps {
                 sh 'echo init stage ...'
