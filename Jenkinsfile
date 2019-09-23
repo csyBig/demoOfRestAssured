@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-
+        def mvnHome
         stage('init'){
             steps {
                 sh 'echo init stage ...'
