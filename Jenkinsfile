@@ -2,40 +2,34 @@ pipeline {
     agent any
 
     stages {
-        stage ('mvn clean') {
-
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean test'
+        stage('Build') {
+            parallel{
+                stage('Build:Module1') {
+                    steps {
+                        sh 'echo Build Module1 stage ...'
+                    }
+                }
+                stage('Build:Module2') {
+                    steps {
+                        sh 'echo Build Module2 stage ...'
+                    }
+                }
+                stage('Build:Module3') {
+                    steps {
+                        sh 'echo Build Module3 stage ...'
+                    }
                 }
             }
         }
-
-        stage ('Testing Stage') {
-
-            parallel {
-                stage('first parallel') {
-                    steps {
-                        echo 'first stage'
-                    }
-                }
-
-                stage('seconde parallel') {
-                    steps {
-                        echo 'second stage'
-                        }
-                }
-                stage(){
-                        steps {
-                                withMaven(maven : 'maven_3_5_0') {
-                                    sh 'mvn clean test'
-                                }
-                            }
-                }
-             }
+        stage('Test'){
+            steps {
+                sh 'echo Test stage ...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploy stage ...'
+            }
         }
     }
-
-
-
-}
+  }
