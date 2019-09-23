@@ -1,9 +1,9 @@
 pipeline {
     agent any
-
+    def mvnHome = tool 'M3'
     stages {
 
-     def mvnHome = tool 'M3'
+
         stage('init'){
             steps {
                 sh 'echo init stage ...'
